@@ -24,25 +24,56 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="1" Visibility="Visible" x:Name="panelServers">
-            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
-                <StackPanel Orientation="Vertical" x:Name="listConfigs"></StackPanel>
-            </ScrollViewer>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-            <TextBlock Text="There is no server configuration" x:Name="textNoServer"
-                FontFamily="{StaticResource SegoeUI}"
-                HorizontalAlignment="Center" VerticalAlignment="Top" 
-                Margin="0 20" Foreground="Gray" 
-                FontWeight="Normal" FontSize="14"/>
+            <Grid Grid.Row="0" Margin="0 0 0 2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-            <Button Width="40" Height="40" Margin="0 0 15 15" 
-                Style="{StaticResource Button.Circle}" ToolTip="Add new server configuration" 
-                HorizontalAlignment="Right" VerticalAlignment="Bottom"
-                Click="OnAddButtonClick">
+                <Grid Grid.Column="0">
+                    <Button Style="{StaticResource Button.Rectangle.Gray}" IsEnabled="False"/>
+                    <Label Grid.Row="0" Content="Local Servers"
+                        HorizontalAlignment="Center" VerticalAlignment="Center"
+                        FontFamily="{StaticResource SegoeUI}" Foreground="White" FontWeight="Normal" 
+                        FontSize="14" IsHitTestVisible="False"/>
+                </Grid>
 
-                <Rectangle Fill="{StaticResource Icon.Plus}" Grid.Column="0" 
-                    Width="15" Height="15" Margin="0" 
-                    HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            </Button>
+                <Grid Grid.Column="2">
+                    <Button Style="{StaticResource Button.Rectangle.Gray}"/>
+                    <Label Grid.Row="0" Content="Online Servers"
+                        HorizontalAlignment="Center" VerticalAlignment="Center"
+                        FontFamily="{StaticResource SegoeUI}" Foreground="White" FontWeight="Normal" 
+                        FontSize="14" IsHitTestVisible="False"/>
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Row="1" x:Name="panelLocalServers">
+                <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                    <StackPanel Orientation="Vertical" x:Name="listConfigs"></StackPanel>
+                </ScrollViewer>
+
+                <TextBlock Text="There is no server configuration" x:Name="textNoServer"
+                    FontFamily="{StaticResource SegoeUI}"
+                    HorizontalAlignment="Center" VerticalAlignment="Top" 
+                    Margin="0 20" Foreground="Gray" 
+                    FontWeight="Normal" FontSize="14"/>
+
+                <Button Width="40" Height="40" Margin="0 0 15 15" 
+                    Style="{StaticResource Button.Circle}" ToolTip="Add new server configuration" 
+                    HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                    Click="OnAddButtonClick">
+
+                    <Rectangle Fill="{StaticResource Icon.Plus}" Grid.Column="0" 
+                        Width="15" Height="15" Margin="0" 
+                        HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Button>
+            </Grid>
         </Grid>
 
         <Grid Grid.Row="1" Visibility="Hidden" x:Name="panelAdd">
